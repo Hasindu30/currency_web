@@ -9,15 +9,16 @@ app.use(express.json());
 app.use(cors());
 
 //all currencies
-app.get("/getAllCurrencies" ,async (req,res)=>{
-  const nameURL ='https://docs.openexchangerates.org/reference/currencies-json?app_id=645a1780d33144b3986f7d2a40ec4269'  
+app.get("/getAllCurrencies" ,async (req, res)=>{
+  const nameURL ='https://openexchangerates.org/api/currencies.json?app_id=645a1780d33144b3986f7d2a40ec4269'; 
   
   
-  try{}catch(err) {
-    const namesResponce =await axios.get(nameURL);
-  const nameData =namesResponce.data;
+  try{const namesResponce =await axios.get(nameURL);
+    const nameData =namesResponce.data;
+    
 
   return res.json(nameData);
+  }catch (err){
     console.error(err);
   }
 });
