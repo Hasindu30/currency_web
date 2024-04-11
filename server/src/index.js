@@ -3,6 +3,10 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
+//config
+require('dotenv').config();
+
+console.log(process.env.APP_ID);
 
 //middle wares
 app.use(express.json());
@@ -30,7 +34,7 @@ app.get("/convert",async (req,res)=>{
         SourceCurrency,
         TargetCurrency,
         amountInSourceCurrency,
-    }=req.query;
+    } = req.query;
     try{
         const dataUrl ='https://openexchangerates.org/api/historical/$(date).json?app_id=645a1780d33144b3986f7d2a40ec4269';
         
